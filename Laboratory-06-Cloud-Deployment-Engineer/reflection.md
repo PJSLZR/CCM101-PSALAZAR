@@ -1,0 +1,11 @@
+# Mission Reflection
+
+Writing a docker-compose.yml file makes a cloud engineer's job much easier than typing commands manually because the entire multi-container setup becomes a single, repeatable, version-controlled file. Instead of remembering and re-typing a long docker run command for every container and manually linking them together, I can describe the whole stack once and bring it up or tear it down with one command. This also means anyone else on the team can deploy the exact same environment just by running docker-compose up -d against the same file.
+
+Because YAML is strictly space-sensitive, an indentation error — such as using a Tab instead of spaces, or misaligning a key under the wrong parent — breaks the file's structure. Docker Compose will either fail to parse the file and throw an error, or worse, silently interpret the configuration differently than intended, for example treating a service's settings as belonging to the wrong service. This is why consistent, careful indentation matters so much in Infrastructure as Code.
+
+We used environment variables like MYSQL_PASSWORD in the Compose file so that configuration values could be set at deployment time rather than hardcoded inside the application or database image. This keeps the images themselves generic and reusable, and makes it easy to change credentials or settings without rebuilding anything. In a production setting, these values would be pulled from a secrets manager rather than written in plain text.
+
+Deploying a fully functional enterprise cloud storage system in just a few minutes felt genuinely impressive. A setup that would traditionally take significant manual configuration — installing a web server, a database, linking them, configuring networking — was reduced to writing one file and running one command.
+
+My understanding of cloud computing has evolved a lot since Mission 1. I started by learning individual pieces — a single container, a single storage bucket — and have since moved toward thinking in terms of full systems: how multiple services communicate, depend on each other, and are defined as code rather than manual steps. Infrastructure as Code now feels like the natural way real cloud systems should be built and maintained.
