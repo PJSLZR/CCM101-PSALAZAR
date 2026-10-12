@@ -1,0 +1,11 @@
+# Mission Reflection
+
+A host-based firewall protects a server even if the physical network perimeter is breached because it enforces security at the machine level, independent of the network it sits on. Even if an attacker gains access to the broader network — whether through a compromised router, a misconfigured network firewall, or lateral movement from another breached machine — the host-based firewall still blocks any traffic to this server's ports that hasn't been explicitly allowed. It acts as a last line of defense rather than relying solely on the network perimeter holding.
+
+Managing open network ports is critical to reducing attack surface because every open port represents a potential entry point for an attacker. An unused open port running an outdated or misconfigured service can be exploited even if the main application is secure. By closing everything except the specific ports a service actually needs, like SSH and the web application's port, there are far fewer places for an attacker to probe or exploit.
+
+Leaving a database port like 3306 open to the public internet is dangerous in a real enterprise environment because databases typically hold the most sensitive data in the entire system and are a prime target for brute-force login attempts and known exploits. A database should only ever be reachable from the specific application servers that need it, never directly from the public internet, since exposing it removes an entire layer of protection and makes a breach far more likely.
+
+Completing this mission changed my perspective on how easily a server can be compromised. Before this lab, I thought of security as something configured once during setup, but seeing a fully exposed server with every port reachable by default made clear how quickly an unsecured machine becomes a target, and how a single missed step, like enabling a firewall before allowing SSH, could even lock out the legitimate administrator.
+
+With eight completed missions, my GitHub portfolio now demonstrates a complete, end-to-end cloud engineering workflow: from basic container deployment, through multi-cloud and multi-tier architecture, object storage, Infrastructure as Code, observability, and now security hardening, all documented with clear technical writing and evidence screenshots.
